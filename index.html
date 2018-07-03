@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Webstrap - A Web Bootstrap</title>
+
+  <!-- DOM -->
+  <!--[if lt IE 9]>
+    <script src="https://unpkg.com/ie8"></script>
+  <![endif]-->
+  <script>(document.head&&document.head.after)||document.write(
+    '<script src="https://unpkg.com/dom4"><\x2fscript>'
+  );</script>
+
+  <!-- JS -->
+  <script>this.Reflect||document.write(
+    '<script src="https://unpkg.com/core-js-bundle"><\x2fscript>'
+  );</script>
+
+  <!-- DOM Extras -->
+  <script>this.fetch||document.write(
+    '<script src="https://unpkg.com/unfetch@latest/dist/unfetch.umd.js"><\x2fscript>'
+  );</script>
+  <script>try{new EventTarget}catch(e){document.write(
+    '<script src="https://unpkg.com/event-target"><\x2fscript>'
+  )}</script>
+  <script>
+  (function(g,U){try{
+    if(new g[U]('q=%2B').get('q')!='+'||new g[U]({q:1})!='q=1')throw{};
+  }catch(e){g[U]=void 0;document.write(
+    '<script src="https://unpkg.com/url-search-params"><\x2fscript>'
+  )}}(this,'URLSearchParams'));
+  </script>
+  <script>
+    var DOMContentLoaded=new Promise(function($){document.addEventListener('DOMContentLoaded',$,{once:true})});
+  </script>
+
+  <!-- CSS -->
+  <style>
+  html{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+  *,*:before,*:after{-webkit-box-sizing:inherit;-moz-box-sizing:inherit;box-sizing:inherit;}
+  </style>
+
+  <!-- Everything else ... -->
+  <style>
+  html {
+    width: 100%;
+    height: 100%;
+  }
+  html {
+    background: #999;
+  }
+  body {
+    font-family: sans-serif;
+    background: #eee;
+    color: #003;
+    text-align: center;
+    margin: 24px;
+    padding: 24px;
+    height: 80%;  /* no calc(...) */
+    height: calc(100% - (2 * 24px));
+  }
+  </style>
+  <script async defer>
+  DOMContentLoaded.then(function () {
+    document.body.appendChild(
+      document.createElement('p')
+    ).innerHTML = '[ it could work here too ]';
+  });
+  </script>
+</head>
+<body>
+  <h1>Modern Web</h1>
+</body>
+</html>
