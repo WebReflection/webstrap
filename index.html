@@ -6,6 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Webstrap - A Web Bootstrap</title>
 
+  <!-- define the JS bar -->
+  <script>var LEGACY=!this.Reflect;</script>
+
   <!-- DOM -->
   <!--[if lt IE 9]>
     <script src="https://unpkg.com/ie8"></script>
@@ -15,7 +18,7 @@
   );</script>
 
   <!-- JS -->
-  <script>this.Reflect||document.write(
+  <script>LEGACY&&document.write(
     '<script src="https://unpkg.com/core-js-bundle"><\x2fscript>'
   );</script>
 
@@ -38,6 +41,19 @@
   </script>
 
   <!-- CSS -->
+  <script>
+  // this could be a runtime element too
+  // no need to bother document.write
+  // we have document.head.append(...) now
+  // in every browser that reached this point
+  document.write('<link href="css/' + (
+    this.CSS ? (
+      CSS.supports('--O:O') ?
+        'unicorn' : // modern browsers with variables support
+        'basic'     // relatively modern browsers
+    ) : 'legacy'    // every IE version ever
+  ) + '.css" rel="stylesheet">');
+  </script>
   <style>
   html{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
   *,*:before,*:after{-webkit-box-sizing:inherit;-moz-box-sizing:inherit;box-sizing:inherit;}
@@ -63,12 +79,13 @@
     height: 100%;
   }
   </style>
-  <script async defer>
-  DOMContentLoaded.then(function () {
-    document.body.appendChild(
-      document.createElement('p')
-    ).innerHTML = '[ it could work here too ]';
-  });
+  <script>
+  // bring in asynchronously the main bundle
+  (function (script) {
+    script.async = true;
+    script.src = 'js/' + (LEGACY ? 'es5.js' : 'es2015.js');
+    document.head.prepend(script);
+  }(document.createElement('script')));
   </script>
 </head>
 <body>
